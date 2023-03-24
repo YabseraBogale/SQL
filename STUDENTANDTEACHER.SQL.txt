@@ -1,0 +1,45 @@
+create table teacher(
+	teacher_id int not null primary key,
+	fname char(20) not null,
+	lname char(20) not null,
+	department char(20) not null,
+	salary int not null,
+	teacher_date datetime
+);
+
+create table student(
+	stud_id int not null primary key,
+	fname char(20) not null,
+	lname char(20) not null,
+	stud_department char(20) not null
+	 
+);
+
+insert into teacher(teacher_id,fname,lname,department,salary,teacher_date)
+values
+(01,'mike','joe','CS',10000000,2023-03-27),
+(02,'joe','mike','CS',200000,2023-03-25),
+(03,'joe','doe','Accounting',2400000,2022-03-25),
+(04,'papi','mike','Business',210000,2022-04-25);
+
+insert into student(stud_id,fname,lname,stud_department)
+values
+(01,'Ruth','mike','CS'),
+(02,'meri','fana','CS'),
+(03,'helen','dave','business'),
+(04,'kidist','elase','accounting');
+
+insert into student(stud_id,fname,lname,stud_department)
+values(05,'ababa','abebe','ACCOUNTING');
+insert into student(stud_id,fname,lname,stud_department)
+values(0,'baba','abebe','ACCOUNTING');
+select * from student where fname!='Ruth' and fname!='meri';
+select * from student WHERE stud_department='CS';
+select * from student where fname in ('%a');
+select * from student where fname like 'a%';
+
+select * from teacher where salary>100000 and salary<500000;
+select count(*) from teacher where department='CS';
+select * from student where stud_id%2!=0;
+select * from student where stud_id%2=0;
+select GETDATE();
