@@ -1,0 +1,67 @@
+
+create table teacher(
+	teacher_id int not null primary key,
+	fname char(20) not null,
+	lname char(20) not null,
+	department char(20) not null,
+	salary int not null,
+	
+);
+
+
+
+create table student(
+	stud_id int not null primary key,
+	fname char(20) not null,
+	lname char(20) not null,
+	stud_department char(20) not null,
+	teacher_id int not null,
+	foreign key (teacher_id) references teacher(teacher_id)
+);
+
+
+
+
+insert into teacher(teacher_id,fname,lname,department,salary)
+values
+(01,'mike','joe','CS',10000000),
+(02,'joe','mike','CS',200000),
+(03,'joe','doe','Accounting',2400000),
+(04,'papi','mike','Business',210000);
+
+insert into student(stud_id,fname,lname,stud_department,teacher_id)
+values
+(01,'Ruth','mike','CS',01),
+(02,'meri','fana','CS',01),
+(03,'helen','dave','business',02),
+(04,'kidist','elase','accounting',03);
+
+
+
+
+
+select * from student where fname!='Ruth' and fname!='meri';
+select * from student WHERE stud_department='CS';
+select * from student where fname in ('%a');
+select * from student where fname like 'a%';
+
+select * from teacher where salary>100000 and salary<500000;
+select count(*) from teacher where department='CS';
+select * from student where stud_id%2!=0;
+select * from student where stud_id%2=0;
+select GETDATE();
+
+
+
+select * from student;
+select * from teacher;
+
+select stud_department,department from student cross join teacher;
+select fname from student;
+
+select * from student union select * from teacher;
+select * from student intersect select * from teacher;
+select * from student except select * from teacher;
+
+
+ 
